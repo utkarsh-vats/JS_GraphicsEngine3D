@@ -12,14 +12,14 @@ class triangle3D {
 	}
 	draw = (
 		colour = "rgb(0, 0, 0)",
-		strokeWeight = 1,
+		strokeWidth = 1,
 		isFill = true,
 		strokeColour = "rgb(255, 255, 255)"
 	) => {
 		noFill();
 		if (isFill) fill(colour);
 		stroke(strokeColour);
-		strokeWeight(strokeWeight);
+		strokeWeight(strokeWidth);
 		beginShape();
 		vertex(this.vertex[0].x, this.vertex[0].y);
 		vertex(this.vertex[1].x, this.vertex[1].y);
