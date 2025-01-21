@@ -8,15 +8,29 @@ class vec3D {
 
 class triangle3D {
 	constructor(a = new vec3D(), b = new vec3D(), c = new vec3D()) {
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		this.vertex = [a, b, c];
 	}
+	draw = (
+		colour = "rgb(0, 0, 0)",
+		strokeWeight = 1,
+		isFill = true,
+		strokeColour = "rgb(255, 255, 255)"
+	) => {
+		noFill();
+		if (isFill) fill(colour);
+		stroke(strokeColour);
+		strokeWeight(strokeWeight);
+		beginShape();
+		vertex(this.vertex[0].x, this.vertex[0].y);
+		vertex(this.vertex[1].x, this.vertex[1].y);
+		vertex(this.vertex[2].x, this.vertex[2].y);
+		endShape(CLOSE);
+	};
 }
 
 class mesh3D {
 	constructor() {
-		this.triangles = new Array();
+		this.triangles = [];
 	}
 
 	add = (triangle) => {
@@ -31,4 +45,18 @@ class mesh3D {
 	getTriangles = () => {
 		return this.triangles;
 	};
+	draw = () => {
+		for (let triangle of this.triangles) triangle.draw();
+	};
+}
+
+class mat4x4 {
+	constructor() {
+		this.matrix = [
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+		];
+	}
 }
